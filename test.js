@@ -1,12 +1,12 @@
-var test = require('tape')
-var Emitus = require('./')
+const test = require('tape')
+const Emitus = require('./')
 
-test('Test Suite', function (t) {
+test('Test Suite', t => {
   t.plan(7)
 
   const Octocat = Emitus({
     name: 'Octocat',
-    commit: function (message, branch) {
+    commit: (message, branch) => {
       t.equal(branch, 'master', 'OK when params are equal')
 
       // Emit event
@@ -15,7 +15,7 @@ test('Test Suite', function (t) {
   })
 
   // Event handler
-  Octocat.on('commit', function (message, branch) {
+  Octocat.on('commit', (message, branch) => {
     t.equal(message, 'message', 'OK when params are equal')
   })
 

@@ -13,7 +13,7 @@ $ npm install emitus --save-dev
 If one param is provided (`object`), **Emitus** extends this plain object using [`Object.assign(EmitusObject, APIObject)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
 ```js
-import Emitus from 'emitus'
+const Emitus = require('emitus')
 
 // API
 const Octocat = Emitus({

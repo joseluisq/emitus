@@ -1,6 +1,6 @@
 {
   "name": "emitus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small ES6 Event Emitter to extend plain objects.",
   "repository": "joseluisq/emitus",
   "license": "MIT",
@@ -14,23 +14,26 @@
     "handler",
     "extend"
   ],
-  "main": "dist/emitus.min.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.es5.js",
   "scripts": {
-    "build": "babel index.js | uglifyjs --stats -vmc > dist/emitus.min.js",
-    "test": "tape test.js"
+    "prepublish": "npm run build",
+    "build": "babel index.js -o index.es5.js",
+    "test": "tape -r babel-register test.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.7",
-    "babel-plugin-add-module-exports": "^0.1.2",
-    "babel-plugin-transform-object-assign": "^6.5.0",
-    "babel-preset-es2015": "^6.6.0",
-    "tape": "^4.5.1",
-    "uglify-js": "^2.6.2"
+    "babel-cli": "^6.10.1",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "tape": "^4.6.0"
   },
   "babel": {
-    "presets": ["es2015"],
+    "presets": [
+      "es2015"
+    ],
     "plugins": [
-      "add-module-exports",
       "transform-object-assign"
     ]
   }

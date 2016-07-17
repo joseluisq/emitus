@@ -1,4 +1,4 @@
-export default (obj = {}) => {
+module.exports = (obj = {}) => {
   const list = []
   const extend = Object.assign({on, off, emit}, obj)
 
