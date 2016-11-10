@@ -4,12 +4,24 @@
 
 ## Install
 
-```sh
-$ npm install emitus --save-dev
-```
+#### Commonjs
 
 ```sh
-$ bower install emitus --save
+npm install emitus --save-dev
+```
+
+#### AMD
+
+```js
+requirejs(['/app/emitus'], Emitus => {
+
+})
+```
+
+#### Browser
+
+```sh
+bower install emitus --save
 ```
 
 ## Usage

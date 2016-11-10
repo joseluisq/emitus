@@ -1,3 +1,4 @@
+/*! emitus v1.0.2 | MIT (c) 2016 José Luis Quintana */
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -54,3 +55,4 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     window.Emitus = Emitus;
   }
 })();
+
