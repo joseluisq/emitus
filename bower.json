@@ -1,0 +1,28 @@
+{
+  "name": "emitus",
+  "description": "Small ES6 Event Emitter to extend plain objects.",
+  "main": "dist/emitus.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joseluisq/emitus.git"
+  },
+  "author": {
+    "name": "José Luis Quintana",
+    "url": "http://git.io/joseluisq"
+  },
+  "license": "MIT",
+  "keywords": [
+    "emitter",
+    "event",
+    "handler",
+    "extend"
+  ],
+  "homepage": "https://github.com/joseluisq/emitus",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
