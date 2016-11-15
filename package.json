@@ -15,7 +15,7 @@
     "extend"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">= 4"
   },
   "main": "dist/emitus.js",
   "scripts": {
