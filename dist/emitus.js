@@ -1,30 +1,52 @@
 /*! emitus v1.0.5 | MIT (c) 2016 José Luis Quintana */
-'use strict';
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define("Emitus", ["module"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.Emitus = mod.exports;
+  }
+})(this, function (module) {
+  "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+  var _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
 
-(function () {
-  var Emitus = function Emitus() {
+    return target;
+  };
+
+  module.exports = function () {
     var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     var list = [];
     var api = _extends({ on: on, off: off, emit: emit }, obj);
 
-    function on(name, callback) {
-      list.push({ name: name, callback: callback });
+    function on(name, fn) {
+      list.push({ name: name, fn: fn });
     }
 
     function off(name) {
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var fn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-      list.forEach(function (evnt, i) {
-        if (evnt.name === name && evnt.callback === callback) {
+      list.forEach(function (e, i) {
+        if (e.name === name && e.fn === fn) {
           list.splice(i, 1);
         }
 
-        if (evnt.name === name && !callback) {
+        if (e.name === name && !fn) {
           list.splice(i, 1);
         }
       });
@@ -35,24 +57,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
-      list.forEach(function (evnt) {
-        if (evnt.name === name) {
-          evnt.callback.apply(_this, args);
+      list.forEach(function (e) {
+        if (e.name === name) {
+          e.fn.apply(_this, args);
         }
       });
     }
 
     return api;
   };
-
-  if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && _typeof(module.exports) === 'object') {
-    module.exports = Emitus;
-  } else if (typeof define === 'function' && define.amd) {
-    define([], function () {
-      return Emitus;
-    });
-  } else {
-    window.Emitus = Emitus;
-  }
-})();
+});
 

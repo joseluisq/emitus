@@ -1,42 +1,30 @@
-(() => {
-  const Emitus = (obj = {}) => {
-    const list = []
-    const api = Object.assign({on, off, emit}, obj)
+module.exports = (obj = {}) => {
+  const list = []
+  const api = Object.assign({on, off, emit}, obj)
 
-    function on (name, callback) {
-      list.push({name, callback})
-    }
-
-    function off (name, callback = null) {
-      list.forEach((evnt, i) => {
-        if (evnt.name === name && evnt.callback === callback) {
-          list.splice(i, 1)
-        }
-
-        if (evnt.name === name && !callback) {
-          list.splice(i, 1)
-        }
-      })
-    }
-
-    function emit (name, args = []) {
-      list.forEach(evnt => {
-        if (evnt.name === name) {
-          evnt.callback.apply(this, args)
-        }
-      })
-    }
-
-    return api
+  function on (name, fn) {
+    list.push({name, fn})
   }
 
-  if (typeof module === 'object' && typeof module.exports === 'object') {
-    module.exports = Emitus
-  } else if (typeof define === 'function' && define.amd) {
-    define([], () => {
-      return Emitus
+  function off (name, fn = null) {
+    list.forEach((e, i) => {
+      if (e.name === name && e.fn === fn) {
+        list.splice(i, 1)
+      }
+
+      if (e.name === name && !fn) {
+        list.splice(i, 1)
+      }
     })
-  } else {
-    window.Emitus = Emitus
   }
-})()
+
+  function emit (name, args = []) {
+    list.forEach(e => {
+      if (e.name === name) {
+        e.fn.apply(this, args)
+      }
+    })
+  }
+
+  return api
+}

@@ -4,7 +4,7 @@
 
 ## Install
 
-#### Commonjs
+#### CommonJS
 
 ```sh
 npm install emitus --save-dev
@@ -13,7 +13,7 @@ npm install emitus --save-dev
 #### AMD
 
 ```js
-requirejs(['/app/emitus'], Emitus => {
+requirejs(['emitus'], Emitus => {
 
 })
 ```
@@ -31,7 +31,7 @@ If one param is provided (`object`), **Emitus** extends this plain object using 
 ```js
 const Emitus = require('emitus')
 
-// API
+// My API
 const Octocat = Emitus({
   name: 'Octocat',
   commit: (message, branch) => {

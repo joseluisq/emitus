@@ -12,6 +12,8 @@
     "emitter",
     "event",
     "handler",
+    "api",
+    "custom",
     "extend"
   ],
   "engines": {
@@ -24,19 +26,25 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.18.0",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-preset-es2015": "^6.18.0",
-    "babel-register": "^6.18.0",
     "banr-stream": "^1.0.3",
-    "jest-cli": "17.0.1",
-    "uglify-js": "^2.7.4"
+    "jest-cli": "17.0.3",
+    "uglify-js": "^2.7.5"
   },
   "babel": {
     "presets": [
       "es2015"
     ],
     "plugins": [
-      "transform-object-assign"
-    ]
+      "transform-object-assign",
+      "transform-es2015-modules-umd"
+    ],
+    "moduleId": "Emitus"
+  },
+  "jest": {
+    "verbose": true,
+    "testRegex": "test.(js|jsx|spec)$"
   }
 }
