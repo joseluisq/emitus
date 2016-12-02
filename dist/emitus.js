@@ -1,4 +1,4 @@
-/*! emitus v1.0.5 | MIT (c) 2016 José Luis Quintana */
+/*! emitus v1.0.6 | MIT (c) 2016 José Luis Quintana */
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
     define("Emitus", ["module"], factory);
