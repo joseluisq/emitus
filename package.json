@@ -19,7 +19,7 @@
   "engines": {
     "node": ">= 4"
   },
-  "main": " ./emitus.js",
+  "main": "./emitus.js",
   "scripts": {
     "start": "webpack-dev-server -d --content-base ./ --inline emitus.js",
     "build:lib": "babel ./src -d . --ignore 'test.js'",
