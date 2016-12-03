@@ -1,5 +1,5 @@
 /emitus.js
-!modules
+!src
 node_modules
 bower_components
 coverage
