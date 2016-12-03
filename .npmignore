@@ -16,6 +16,10 @@ nbproject
 .gitignore
 .tmp
 .jshintrc
+.eslintrc
+scripts
+bower.json
+webpack.config.js
 .editorconfig
 CONTRIBUTING.md
 *.md
