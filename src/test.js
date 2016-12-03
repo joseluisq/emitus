@@ -1,4 +1,6 @@
-const Emitus = require('./')
+/* global test, expect */
+
+import Emitus from '../src/emitus'
 
 const Octocat = Emitus({
   name: 'Octocat',

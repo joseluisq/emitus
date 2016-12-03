@@ -1,3 +1,5 @@
+/* global module */
+
 module.exports = (obj = {}) => {
   const list = []
   const api = Object.assign({on, off, emit}, obj)

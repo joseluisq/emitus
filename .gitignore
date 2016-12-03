@@ -1,8 +1,10 @@
+/emitus.js
+!modules
 node_modules
-coverage
 bower_components
-lib
+coverage
 log
+.tmp
 *#
 *~
 *.log

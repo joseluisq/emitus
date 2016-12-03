@@ -1,7 +1,7 @@
 {
   "name": "emitus",
   "description": "Small ES6 Event Emitter to extend plain objects.",
-  "main": "dist/emitus.min.js",
+  "main": "dist/emitus.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/joseluisq/emitus.git"

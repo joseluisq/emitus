@@ -20,9 +20,20 @@ requirejs(['emitus'], Emitus => {
 
 #### Browser
 
+##### Bower
 ```sh
 bower install emitus --save
 ```
+
+##### CDN
+[UMD](https://github.com/umdjs/umd/) file is also available on [unpkg](https://unpkg.com):
+
+```html
+<script src="https://unpkg.com/emitus/dist/emitus.min.js"></script>
+```
+
+You can use the library via `window.Emitus`.
+
 
 ## Usage
 
