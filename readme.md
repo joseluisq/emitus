@@ -1,4 +1,4 @@
-# Emitus [![Build Status](https://travis-ci.org/joseluisq/emitus.svg?branch=master)](https://travis-ci.org/joseluisq/emitus) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+# Emitus [![Build Status](https://travis-ci.org/joseluisq/emitus.svg?branch=master)](https://travis-ci.org/joseluisq/emitus) [![Coverage Status](https://coveralls.io/repos/github/joseluisq/emitus/badge.svg?branch=master)](https://coveralls.io/github/joseluisq/emitus?branch=master) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 > Small [ES6](http://babeljs.io/docs/learn-es2015/) [Event Emitter](https://nodejs.org/api/events.html) to extend plain objects.
 

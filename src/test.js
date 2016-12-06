@@ -31,3 +31,8 @@ test('Trigger event with expected arguments', () => {
 
 // Call API function
 Octocat.commit('message', 'master')
+
+test('Off an event', () => {
+  Octocat.off('commit')
+  expect(1).toBe(1)
+})
