@@ -1,6 +1,6 @@
 {
   "name": "emitus",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Small ES6 Event Emitter to extend plain objects.",
   "repository": "joseluisq/emitus",
   "license": "MIT",
