@@ -24,4 +24,5 @@ webpack.config.js
 CONTRIBUTING.md
 *.md
 **/*.md
-test
+__test__
+build.js

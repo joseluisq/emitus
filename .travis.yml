@@ -11,6 +11,10 @@ node_js:
 git:
   depth: 1
 
+cache:
+  directories:
+    - node_modules
+
 branches:
   only:
   - master
