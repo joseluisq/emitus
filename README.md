@@ -1,51 +1,40 @@
 # Emitus [![Build Status](https://travis-ci.org/joseluisq/emitus.svg?branch=master)](https://travis-ci.org/joseluisq/emitus) [![Coverage Status](https://coveralls.io/repos/github/joseluisq/emitus/badge.svg?branch=master)](https://coveralls.io/github/joseluisq/emitus?branch=master) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-> Small [ES6](http://babeljs.io/docs/learn-es2015/) [Event Emitter](https://nodejs.org/api/events.html) to extend plain objects.
+> Small [ES6](http://babeljs.io/docs/learn-es2015/) [Event Emitter](https://nodejs.org/api/events.html) that can extend your plain objects.
 
 ## Install
 
-#### CommonJS
+[Yarn](https://github.com/yarnpkg/)
+
+```sh
+yarn add emitus --dev
+```
+
+[NPM](https://www.npmjs.com/)
 
 ```sh
 npm install emitus --save-dev
 ```
 
-#### AMD
-
-```js
-requirejs(['emitus'], Emitus => {
-
-})
-```
-
-#### Browser
-
-##### Bower
-```sh
-bower install emitus --save
-```
-
-##### CDN
 [UMD](https://github.com/umdjs/umd/) file is also available on [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/emitus/dist/emitus.min.js"></script>
+<script src="https://unpkg.com/emitus/dist/emitus.umd.js"></script>
 ```
 
-You can use the library via `window.Emitus`.
-
+You can use the library via `window.emitus`.
 
 ## Usage
 
 If one param is provided (`object`), **Emitus** extends this plain object using [`Object.assign(EmitusObject, APIObject)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
 ```js
-const Emitus = require('emitus')
+import emitus from 'emitus'
 
 // My API
-const Octocat = Emitus({
+const Octocat = emitus({
   name: 'Octocat',
-  commit: (message, branch) => {
+  createCommit: (message, branch) => {
     console.log(`"${Octocat.name}" is commiting on branch "${branch}"...`)
 
     // Emit event
@@ -59,7 +48,7 @@ Octocat.on('commit', (message, branch) => {
 })
 
 // API function
-Octocat.commit('First change', 'master')
+Octocat.createCommit('First change', 'master')
 
 // "Octocat" is commiting on branch "master"...
 // Commit "First change" is on branch "master"!
@@ -87,4 +76,4 @@ Emit an **event** (`string`) with **options** (`array`).
 ## License
 MIT license
 
-© 2016 [José Luis Quintana](http://git.io/joseluisq)
+© 2017 [José Luis Quintana](http://git.io/joseluisq)
