@@ -1,10 +1,10 @@
 import test from 'tape'
-import Emitus from './'
+import emitus from './'
 
 test('Test suite', t => {
   t.plan(8)
 
-  const Octocat = Emitus({
+  const Octocat = emitus({
     name: 'Octocat',
     commit: (message, branch) => {
       t.equal(message, 'message')
