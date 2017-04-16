@@ -19,10 +19,12 @@
   "engines": {
     "node": ">= 4"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "version": "npm run build",
-    "build": "rollup -c",
+    "build": "npm run js:compressed && npm run js:uncompressed",
+    "js:compressed": "cross-env NODE_ENV=compressed rollup -c",
+    "js:uncompressed": "cross-env NODE_ENV=uncompressed rollup -c",
     "test": "npm run lint && cross-env BABEL_ENV=test nyc npm run test:tape",
     "lint": "eslint src test",
     "test:tape": "tape -r babel-register test.js",

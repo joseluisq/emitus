@@ -1,4 +1,4 @@
-module.exports = (api = {}) => {
+export default function emitus (api = {}) {
   const events = {}
 
   return Object.assign(
