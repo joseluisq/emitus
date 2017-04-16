@@ -19,7 +19,7 @@
   "engines": {
     "node": ">= 4"
   },
-  "main": "dist/index.js",
+  "main": "dist/emitus.js",
   "scripts": {
     "version": "npm run build",
     "build": "npm run js:compressed && npm run js:uncompressed",
