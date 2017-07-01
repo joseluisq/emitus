@@ -1,32 +1,30 @@
-import test from 'tape'
+import test from 'ava'
 import emitus from './'
 
 test('Test suite', t => {
-  t.plan(8)
+  t.plan(10)
 
   const Octocat = emitus({
     name: 'Octocat',
     commit: (message, branch) => {
-      t.equal(message, 'message')
-      t.equal(branch, 'master')
+      t.is(message, 'message')
+      t.is(branch, 'master')
 
-      // Emit event
-      Octocat.emit('commit', [ message, branch ])
+      Octocat.emit('commit', [message, branch])
     }
   })
 
-  t.equal(Octocat.name, 'Octocat')
-  t.ok(Octocat.on)
-  t.ok(Octocat.off)
-  t.ok(Octocat.emit)
+  t.is(Octocat.name, 'Octocat')
+  t.truthy(Octocat.on)
+  t.truthy(Octocat.off)
+  t.truthy(Octocat.emit)
 
   Octocat.on('commit', (message, branch) => {
-    t.equal(message, 'message')
-    t.equal(branch, 'master')
+    t.is(message, 'message')
+    t.is(branch, 'master')
   })
 
-  // Call API function
-  Octocat.commit('message', 'master')
+  t.falsy(Octocat.commit('message', 'master'))
 
-  Octocat.off('commit')
+  t.falsy(Octocat.off('commit'))
 })

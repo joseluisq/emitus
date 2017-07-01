@@ -4,7 +4,7 @@ export default function emitus (api = {}) {
   return Object.assign(
     {
       on (type, fn) {
-        (events[type] || (events[type] = [])).push(fn)
+        ;(events[type] || (events[type] = [])).push(fn)
       },
       off (type, fn = null) {
         if (events[type]) {
@@ -12,7 +12,7 @@ export default function emitus (api = {}) {
         }
       },
       emit (type, args = []) {
-        (events[type] || []).map(fn => {
+        ;(events[type] || []).map(fn => {
           if (fn && typeof fn === 'function') fn.apply(this, args)
         })
       }
