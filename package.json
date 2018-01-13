@@ -1,6 +1,6 @@
 {
   "name": "emitus",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Small Typescript Event Emitter",
   "repository": "joseluisq/emitus",
   "license": "MIT",
