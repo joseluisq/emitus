@@ -1536,7 +1536,7 @@ karma-spec-reporter@^0.0.32:
   dependencies:
     colors "^1.1.2"
 
-karma-typescript@^3.0.6:
+karma-typescript@^3.0.5:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/karma-typescript/-/karma-typescript-3.0.9.tgz#3d3fd54e2fb28d84dd9c22946525bfec90606078"
   dependencies:
