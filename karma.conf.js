@@ -8,7 +8,7 @@ const travisLaunchers = {
 
 const localBrowsers = realBrowser ? Object.keys(travisLaunchers) : [ 'Chrome' ]
 
-module.exports = (config) => {
+module.exports = function (config) {
   config.set({
     frameworks: [ 'jasmine', 'karma-typescript' ],
     plugins: [
@@ -21,12 +21,12 @@ module.exports = (config) => {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    files: [ { pattern: 'src/**/*.ts' }, { pattern: 'test/**/*.ts' } ],
+    files: [ { pattern: 'src/**/*.ts' }, { pattern: 'test/**/*.spec.ts' } ],
     preprocessors: {
-      'src/**/*.ts': [ 'karma-typescript' ],
-      'test/**/*.ts': [ 'karma-typescript' ]
+      '**/*.ts': [ 'karma-typescript' ],
+      'test/**/*.spec.ts': [ 'karma-typescript' ]
     },
-    reporters: [ 'progress', 'karma-typescript' ],
+    reporters: [ 'progress', 'kjhtml' ],
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
