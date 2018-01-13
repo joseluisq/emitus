@@ -29,13 +29,13 @@
     "minify:browser": "uglifyjs dist/${npm_package_name}.umd.js -cm --source-map -o dist/${npm_package_name}.umd.min.js",
     "watch": "node node_modules/typescript/lib/tsc.js --watch",
     "clean": "rm -rf dist",
-    "test": "karma start --single-run --reporters spec,karma-typescript",
+    "test": "karma start --single-run --reporters spec",
     "test:watch": "karma start",
     "lint": "node node_modules/tslint/bin/tslint --format stylish --project tsconfig.json --type-check"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.8.2",
-    "@types/node": "^8.5.2",
+    "@types/jasmine": "^2.8.4",
+    "@types/node": "^9.3.0",
     "jasmine-core": "^2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^2.0.0",
@@ -44,8 +44,8 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-spec-reporter": "^0.0.32",
     "karma-typescript": "^3.0.9",
-    "rollup": "^0.53.0",
-    "tslint": "^5.8.0",
+    "rollup": "^0.54.0",
+    "tslint": "^5.9.1",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.6.2",
     "uglifyjs": "^2.4.11"
