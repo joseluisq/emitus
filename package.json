@@ -1,7 +1,7 @@
 {
   "name": "emitus",
   "version": "2.0.3",
-  "description": "Small ES6 Event Emitter that can extend your plain objects.",
+  "description": "Small Typescript Event Emitter",
   "repository": "joseluisq/emitus",
   "license": "MIT",
   "author": {
@@ -19,83 +19,35 @@
   "engines": {
     "node": ">= 4"
   },
-  "main": "dist/emitus.js",
+  "main": "./dist/emitus.umd.js",
+  "typings": "index.d.ts",
   "scripts": {
     "version": "npm run build",
-    "build": "npm run clean && npm run js",
-    "js": "npm run js:min && npm run js:unmin",
-    "js:min": "cross-env NODE_ENV=minified rollup -c",
-    "js:unmin": "cross-env NODE_ENV=unminified rollup -c",
-    "lint": "eslint index.js",
-    "clean": "rm -rf .nyc_output && rm -rf coverage && rm -rf dist",
-    "test": "npm run clean && npm run lint && npm run test:ava",
-    "test:ava": "cross-env NODE_ENV=testing nyc ava --verbose",
-    "test:watch": "ava --verbose --watch",
-    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "build": "npm run clean && npm run compile && npm run minify:browser",
+    "compile": "node node_modules/typescript/lib/tsc.js --module es2015 && npm run compile:browser",
+    "compile:browser": "rollup -c && npm run minify:browser",
+    "minify:browser": "uglifyjs dist/${npm_package_name}.umd.js -cm --source-map -o dist/${npm_package_name}.umd.min.js",
+    "watch": "node node_modules/typescript/lib/tsc.js --watch",
+    "clean": "rm -rf dist",
+    "test": "karma start --single-run --reporters spec",
+    "test:watch": "karma start",
+    "lint": "node node_modules/tslint/bin/tslint --format stylish --project tsconfig.json --type-check"
   },
   "devDependencies": {
-    "ava": "^0.20.0",
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "coveralls": "^2.13.1",
-    "cross-env": "^5.0.1",
-    "eslint": "^4.1.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.6.1",
-    "eslint-plugin-node": "^5.1.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "nyc": "^11.0.3",
-    "object-assign": "^4.1.1",
-    "rollup": "^0.43.0",
-    "rollup-plugin-buble": "^0.15.0",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-inject": "^2.0.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "stage-0"
-    ],
-    "env": {
-      "testing": {
-        "presets": [
-          "es2015",
-          "stage-0"
-        ],
-        "ignore": "test.js",
-        "sourceMaps": "inline"
-      }
-    }
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "extends": [
-      "standard"
-    ]
-  },
-  "standard": {
-    "parser": "babel-eslint"
-  },
-  "ava": {
-    "require": [
-      "babel-core/register"
-    ]
-  },
-  "nyc": {
-    "require": [
-      "babel-register"
-    ],
-    "checkCoverage": true,
-    "reporter": [
-      "text",
-      "lcov"
-    ]
+    "@types/jasmine": "^2.8.4",
+    "@types/node": "^9.3.0",
+    "jasmine-core": "^2.8.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-spec-reporter": "^0.0.32",
+    "karma-typescript": "^3.0.5",
+    "rollup": "^0.54.0",
+    "tslint": "^5.9.1",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.2",
+    "uglifyjs": "^2.4.11"
   }
 }
