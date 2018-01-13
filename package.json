@@ -1,6 +1,6 @@
 {
   "name": "emitus",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Small Typescript Event Emitter",
   "repository": "joseluisq/emitus",
   "license": "MIT",
@@ -25,12 +25,12 @@
     "version": "npm run build",
     "build": "npm run clean && npm run compile && npm run minify:browser",
     "compile": "node node_modules/typescript/bin/tsc --module es2015 && npm run compile:browser",
-    "compile:browser": "rollup -c && npm run minify:browser",
+    "compile:browser": "node_modules/rollup/bin/rollup -c && npm run minify:browser",
     "minify:browser": "uglifyjs dist/${npm_package_name}.umd.js -cm --source-map -o dist/${npm_package_name}.umd.min.js",
     "watch": "node node_modules/typescript/bin/tsc --watch",
     "clean": "rm -rf dist",
-    "test": "karma start --single-run --reporters spec",
-    "test:watch": "karma start",
+    "test": "node_modules/karma/bin/karma start --single-run --reporters spec",
+    "test:watch": "node_modules/karma/bin/karma start",
     "lint": "node node_modules/tslint/bin/tslint --format stylish --project tsconfig.json --type-check"
   },
   "devDependencies": {
