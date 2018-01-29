@@ -3,9 +3,9 @@ interface EventListeners {
 }
 
 export interface Emitus {
-  on(eventName: string, listener: EmitusListener): void
-  off(eventName: string, listener?: EmitusListener): void
-  emit(eventName: string, args?: any): void
+  on (eventName: string, listener: EmitusListener): void
+  off (eventName: string, listener?: EmitusListener): void
+  emit (eventName: string, args?: any): void
 }
 
 export type EmitusListener = (eventName?: string, args?: any) => void
@@ -15,7 +15,7 @@ export function emitus (): Emitus {
 
   return {
     on (eventName: string, listener: EmitusListener): void {
-      ;(events[eventName] || (events[eventName] = [])).push(listener)
+      (events[eventName] || (events[eventName] = [])).push(listener)
     },
 
     off (eventName: string, listener?: EmitusListener): void {
@@ -25,7 +25,7 @@ export function emitus (): Emitus {
     },
 
     emit (eventName: string, args?: any): void {
-      ;(events[eventName] || []).map((listener: EmitusListener) => {
+      (events[eventName] || []).map((listener: EmitusListener) => {
         if (listener && typeof listener === 'function') {
           listener(eventName, args)
         }
