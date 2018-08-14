@@ -1,7 +1,3 @@
-interface EventListeners {
-  [key: string]: any
-}
-
 export interface Emitus {
   on (eventName: string, listener: EmitusListener): void
   off (eventName: string, listener?: EmitusListener): void
@@ -11,25 +7,33 @@ export interface Emitus {
 export type EmitusListener = (eventName?: string, args?: any) => void
 
 export function emitus (): Emitus {
-  const events: EventListeners = Object.create(null)
+  const events: any[] = []
 
   return {
     on (eventName: string, listener: EmitusListener): void {
-      (events[eventName] || (events[eventName] = [])).push(listener)
+      events.push([ eventName, listener ])
     },
 
     off (eventName: string, listener?: EmitusListener): void {
-      if (events[eventName]) {
-        events[eventName].splice(events[eventName].indexOf(listener), 1)
+      for (let i = 0; i < events.length; i++) {
+        const event = events[i]
+
+        if (event[0] === eventName && event[1] === listener) {
+          events.splice(i, 1)
+          break
+        }
       }
     },
 
     emit (eventName: string, args?: any): void {
-      (events[eventName] || []).map((listener: EmitusListener) => {
-        if (listener && typeof listener === 'function') {
-          listener(eventName, args)
+      for (let i = 0; i < events.length; i++) {
+        const event = events[i]
+
+        if (event[0] === eventName) {
+          event[1](eventName, args)
+          break
         }
-      })
+      }
     }
   }
 }

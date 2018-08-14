@@ -1,7 +1,9 @@
-// Place your settings in this file to overwrite default and user settings.
 {
+  "editor.formatOnSave": true,
   "editor.tabSize": 2,
-  "editor.rulers": [140],
+  "editor.rulers": [
+    120
+  ],
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.exclude": {
@@ -13,5 +15,8 @@
     "coverage": true,
     "npm": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "eslint.enable": false,
+  "typescript.format.enable": false,
+  "tslint.enable": true,
+  "tslint.autoFixOnSave": true,
 }
