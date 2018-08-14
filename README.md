@@ -24,6 +24,15 @@ npm install emitus --save-dev
 
 You can also use the library via `window.emitus`.
 
+
+## Mitt differences
+
+- Emitus has been written and tested using Typescript.
+- Emitus uses an array of events instead of a hash.
+- Emitus uses a simple for loop iteration with if controls, no map or coercion.
+- Emitus doesn't support 'emit all' or some wildcard feature.
+- Emitus size is 292bytes minimized + gzipped (UMD) and 888bytes (CommonJS).
+
 ## Usage
 
 ```ts
