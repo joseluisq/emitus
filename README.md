@@ -10,7 +10,7 @@ __Some differences with Mitt__
 - It uses an array of events instead of a hash.
 - It uses a simple `for()` iteration loop with `if()` controls, no map functions or coercion.
 - It doesn't support 'emit-all' or some wildcard feature.
-- It size is just `285bytes` minimized + gzipped (UMD) and `844bytes` (CommonJS).
+- Its size is just `285bytes` minimized + gzipped (UMD) and `844bytes` (CommonJS).
 
 ## Install
 
@@ -37,14 +37,14 @@ You can also use the library via `window.emitus`.
 ## Usage
 
 ```ts
-import { emitus, Emitus, EmitusListener } from 'emitus'
+import { emitus, EmitusListener } from 'emitus'
 
 interface Args { a: number, b: string }
 
 const myArgs: Args = { a: 1, b: '2' }
-const myEvent: EmitusListener<Args> = (type, myArgs) => console.log(type, myArgs)
+const myEvent: EmitusListener<Args> = (name, args) => console.log(name, args)
 
-const e:Emitus = emitus()
+const e = emitus()
 e.on('MY_EVENT', myEvent)
 e.emit('MY_EVENT', myArgs)
 ```
