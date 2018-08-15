@@ -56,7 +56,7 @@ e.emit('MY_EVENT', myArgs)
 Register a custom event listener.
 
 ```ts
-e.on (type: string, func: EmitusListener): void
+e.on (eventName: string, listener: EmitusListener): void
 ```
 
 ### off
@@ -64,15 +64,15 @@ e.on (type: string, func: EmitusListener): void
 Unregister a custom event listener.
 
 ```ts
-e.off (type: string, func?: EmitusListener): void
+e.off (eventName: string, listener?: EmitusListener): void
 ```
 
 ### emit
 
-Calls listener registered for the event named `eventName` passing the supplied arguments.
+Calls listener registered for the event named `eventName` passing the supplied (optional) arguments.
 
 ```ts
-e.emit (eventName: string, myArgs?: any): void
+e.emit (eventName: string, args?: any): void
 ```
 
 ## Contributions
