@@ -31,7 +31,7 @@ describe('Emitus', () => {
 
   describe('on', () => {
     let onSpy: jasmine.Spy
-    const onEvent: EmitusListener = () => console.log()
+    const onEvent: EmitusListener = console.log
 
     beforeEach(() => {
       onSpy = spyOn(e, 'on')
@@ -70,7 +70,7 @@ describe('Emitus', () => {
 
   describe('off', () => {
     let offSpy: jasmine.Spy
-    const onEvent: EmitusListener = () => console.log()
+    const onEvent: EmitusListener = console.log
 
     beforeEach(() => {
       offSpy = spyOn(e, 'off')
@@ -116,8 +116,8 @@ describe('Emitus', () => {
     beforeEach(() => {
       emitSpy = spyOn(e, 'emit')
 
-      e.on('keyup', () => console.log())
-      e.on('keydown', () => console.log())
+      e.on('keyup', console.log)
+      e.on('keydown', console.log)
 
       e.emit('keyup', { a: 1, b: 2 })
       e.emit('keydown', { c: 3, d: 4 })

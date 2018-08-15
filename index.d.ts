@@ -3,5 +3,5 @@ export interface Emitus {
     off(eventName: string, listener?: EmitusListener): void;
     emit(eventName: string, args?: any): void;
 }
-export declare type EmitusListener = (eventName?: string, args?: any) => void;
+export declare type EmitusListener<Args = any> = (eventName?: string, args?: Args) => void;
 export declare function emitus(): Emitus;
