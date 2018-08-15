@@ -2,15 +2,15 @@
 
 > Small [Typescript](https://www.typescriptlang.org/) [Event Emitter](https://nodejs.org/api/events.html). :zap:
 
-### Some differences with Mitt:
+__Some differences with Mitt__
 
 [Mitt](https://github.com/developit/mitt) is a pretty cool and very small event emitter library out there, but __Emitus__ differs with it in some aspects such as:
 
 - Emitus has been written and tested entirely in [Typescript](./src/index.ts).
-- Emitus uses an array of events instead of a hash.
-- Emitus uses a simple `for()` iteration loop with `if()` controls, no map functions or coercion.
-- Emitus doesn't support 'emit-all' or some wildcard feature.
-- Emitus size is just `285bytes` minimized + gzipped (UMD) and `844bytes` (CommonJS).
+- It uses an array of events instead of a hash.
+- It uses a simple `for()` iteration loop with `if()` controls, no map functions or coercion.
+- It doesn't support 'emit-all' or some wildcard feature.
+- It size is just `285bytes` minimized + gzipped (UMD) and `844bytes` (CommonJS).
 
 ## Install
 
