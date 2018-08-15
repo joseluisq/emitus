@@ -2,6 +2,16 @@
 
 > Small [Typescript](https://www.typescriptlang.org/) [Event Emitter](https://nodejs.org/api/events.html). :zap:
 
+### Some differences with Mitt:
+
+[Mitt](https://github.com/developit/mitt) is a pretty cool and very small event emitter library out there, but __Emitus__ differs with it in some aspects such as:
+
+- Emitus has been written and tested entirely in [Typescript](./src/index.ts).
+- Emitus uses an array of events instead of a hash.
+- Emitus uses a simple `for()` iteration loop with `if()` controls, no map functions or coercion.
+- Emitus doesn't support 'emit-all' or some wildcard feature.
+- Emitus size is just `285bytes` minimized + gzipped (UMD) and `844bytes` (CommonJS).
+
 ## Install
 
 [Yarn](https://github.com/yarnpkg/)
@@ -24,30 +34,19 @@ npm install emitus --save-dev
 
 You can also use the library via `window.emitus`.
 
-
-## Mitt differences
-
-- Emitus has been written and tested using Typescript.
-- Emitus uses an array of events instead of a hash.
-- Emitus uses a simple for loop iteration with if controls, no map or coercion.
-- Emitus doesn't support 'emit all' or some wildcard feature.
-- Emitus size is 292bytes minimized + gzipped (UMD) and 888bytes (CommonJS).
-
 ## Usage
 
 ```ts
 import { emitus, Emitus, EmitusListener } from 'emitus'
 
-const emitter:Emitus = emitus()
+interface Args { a: number, b: string }
 
-const onEvent: EmitusListener = (type?: string, args?: any) => {
-  console.log(type, args)
-  // > "myevent", { data: 123456 }
-}
+const myArgs: Args = { a: 1, b: '2' }
+const myEvent: EmitusListener<Args> = (type, myArgs) => console.log(type, myArgs)
 
-emitter.on('myevent', onEvent)
-
-emitter.emit('myevent', { data: 123456 })
+const e:Emitus = emitus()
+e.on('MY_EVENT', myEvent)
+e.emit('MY_EVENT', myArgs)
 ```
 
 ## API
@@ -57,7 +56,7 @@ emitter.emit('myevent', { data: 123456 })
 Register a custom event listener.
 
 ```ts
-emitter.on (type: string, func: EmitusListener): void
+e.on (type: string, func: EmitusListener): void
 ```
 
 ### off
@@ -65,7 +64,7 @@ emitter.on (type: string, func: EmitusListener): void
 Unregister a custom event listener.
 
 ```ts
-emitter.off (type: string, func?: EmitusListener): void
+e.off (type: string, func?: EmitusListener): void
 ```
 
 ### emit
@@ -73,11 +72,11 @@ emitter.off (type: string, func?: EmitusListener): void
 Calls listener registered for the event named `eventName` passing the supplied arguments.
 
 ```ts
-emitter.emit (eventName: string, args?: any): void
+e.emit (eventName: string, myArgs?: any): void
 ```
 
 ## Contributions
-[Pull requests](https://github.com/joseluisq/emitus/pulls) and [issues](https://github.com/joseluisq/emitus/issues) are welcome.
+Feel free to send some [pull request](https://github.com/joseluisq/emitus/pulls) or [issues](https://github.com/joseluisq/emitus/issues).
 
 ## License
 MIT license
