@@ -11,7 +11,7 @@
   "compilerOptions": {
     "outDir": "./",
     "strict": true,
-    "declaration": true,
+    "declaration": false,
     "sourceMap": false,
     "pretty": true,
     "noImplicitReturns": true,
