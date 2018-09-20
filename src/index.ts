@@ -1,34 +1,48 @@
+export type EmitusListener<T = any> = (eventName: string, arg: T) => void
+
 export interface Emitus {
-  on (eventName: string, listener: EmitusListener): void
-  off (eventName: string, listener?: EmitusListener): void
-  emit (eventName: string, args?: any): void
+  /**
+   * Adds an event listener
+   *
+   * @param eventName string
+   * @param listener EmitusListener
+   */
+  on<T = any> (eventName: string, listener: EmitusListener<T>): void
+
+  /**
+   * Removes a registered event listener
+   *
+   * @param eventName string
+   * @param listener EmitusListener
+   */
+  off<T = any> (eventName: string, listener: EmitusListener<T>): void
+
+  /**
+   * Emits a registered event listener
+   *
+   * @param eventName string
+   * @param listener EmitusListener
+   */
+  emit<T = any> (eventName: string, arg?: T): void
 }
 
-export type EmitusListener<Args = any> = (eventName?: string, args?: Args) => void
-
 export function emitus (): Emitus {
-  const events: any[] = []
+  const events: [string, Function][] = []
 
   return {
-    on (eventName: string, listener: EmitusListener): void {
-      if (eventName && listener) {
-        events.push([ eventName, listener ])
+    on<T> (eventName: string, listener: EmitusListener<T>) {
+      if (eventName && listener) events.push([ eventName, listener ])
+    },
+
+    off<T> (eventName: string, listener: EmitusListener<T>) {
+      for (let i = 0; i < events.length; i++) {
+        if (eventName === events[i][0] && listener === events[i][1]) events.splice(i, 1)
       }
     },
 
-    off (eventName: string, listener: EmitusListener): void {
+    emit<T> (eventName: string, arg?: T) {
       for (let i = 0; i < events.length; i++) {
-        if (eventName === events[i][0] && listener === events[i][1]) {
-          events.splice(i, 1)
-        }
-      }
-    },
-
-    emit (eventName: string, args?: any): void {
-      for (let i = 0; i < events.length; i++) {
-        if (eventName && eventName === events[i][0]) {
-          events[i][1](eventName, args)
-        }
+        if (eventName && eventName === events[i][0]) events[i][1](eventName, arg || null)
       }
     }
   }
