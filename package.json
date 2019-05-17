@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/benchmark": "1.0.31",
     "@types/jasmine": "2.8.16",
-    "@types/node": "10.5.8",
+    "@types/node": "10.14.7",
     "benchmark": "2.1.4",
     "git-testing-hook": "0.3.0",
     "jasmine-core": "3.4.0",
